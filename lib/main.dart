@@ -66,6 +66,30 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+                accountName: Text("Username"),
+                accountEmail: Text("user@email.com")),
+            ListTile(
+              title: Text("List Apps - Products"),
+              trailing: Icon(Icons.list),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Consult Products"),
+              trailing: Icon(Icons.add),
+              onTap: () {},
+            ),
+            ListTile(
+              title: Text("Add Account"),
+              trailing: Icon(Icons.add),
+              onTap: () {},
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
