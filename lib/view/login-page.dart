@@ -100,4 +100,47 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  Container textSection() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+      child: Column(
+        children: <Widget>[
+          TextField(
+            controller: emailController,
+            cursorColor: Colors.white,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+                icon: Icon(
+                  Icons.email,
+                  color: Colors.white70,
+                ),
+                hintText: "Email",
+                border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white70)),
+                hintStyle: TextStyle(color: Colors.white70)),
+          ),
+          SizedBox(
+            height: 30.0,
+          ),
+          TextField(
+            controller: passwordController,
+            cursorColor: Colors.white,
+            style: TextStyle(color: Colors.white),
+            obscureText: true,
+            decoration: InputDecoration(
+              icon: Icon(
+                Icons.lock,
+                color: Colors.white70,
+              ),
+              hintText: "Password",
+              border: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white70)),
+              hintStyle: TextStyle(color: Colors.white70),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
