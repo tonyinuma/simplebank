@@ -49,8 +49,9 @@ class _LoginPageState extends State<LoginPage> {
 
     var jsonResponse = null;
 
+    /* Here i can change ip of my api */
     var response =
-        await http.post("http://127.0.0.1:3000/api/users/signin", body: data);
+        await http.post("http://192.168.1.3:3000/api/users/login", body: data);
 
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
@@ -62,8 +63,8 @@ class _LoginPageState extends State<LoginPage> {
         setState(() {
           _isLoading = false;
         });
-        sharedPreferences.setString("user-token", jsonResponse['user-token']);
-        sharedPreferences.clear();
+        sharedPreferences.setString("user-token", jsonResponse['success']);
+        /* sharedPreferences.clear(); */
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (BuildContext context) => MyHomePage()),
             (Route<dynamic> route) => false);
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
   Container buttonSection() {
     return Container(
       width: MediaQuery.of(context).size.width,
-      height: 4.0,
+      height: 40.0,
       padding: EdgeInsets.symmetric(horizontal: 15.0),
       child: RaisedButton(
         onPressed: emailController.text == "" || passwordController.text == ""
@@ -140,6 +141,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Container heardSection() {
+    return Container(
+      margin: EdgeInsets.only(top: 50.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 30.0),
+      child: Text(
+        "Login Bank",
+        style: TextStyle(
+            color: Colors.white70, fontSize: 40.0, fontWeight: FontWeight.bold),
       ),
     );
   }
