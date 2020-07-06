@@ -34,7 +34,11 @@ class _LoginPageState extends State<LoginPage> {
               child: CircularProgressIndicator(),
             )
           : ListView(
-              children: <Widget>[heardSection(), textSection(), butonSection()],
+              children: <Widget>[
+                heardSection(),
+                textSection(),
+                buttonSection()
+              ],
             ),
     ));
   }
@@ -78,13 +82,22 @@ class _LoginPageState extends State<LoginPage> {
       height: 4.0,
       padding: EdgeInsets.symmetric(horizontal: 15.0),
       child: RaisedButton(
-        onPressed: emailController.text == "" || passwordController == "" ? null : (){
-          setState(() {
-            _isLoading = true;
-          });
-          signIn(emailController.text, passwordController)
-        }
+        onPressed: emailController.text == "" || passwordController.text == ""
+            ? null
+            : () {
+                setState(() {
+                  _isLoading = true;
+                });
+                signIn(emailController.text, passwordController.text);
+              },
+        elevation: 0.0,
+        color: Colors.purple,
+        child: Text(
+          "SignIn",
+          style: TextStyle(color: Colors.white),
         ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      ),
     );
   }
 }
